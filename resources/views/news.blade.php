@@ -21,7 +21,7 @@
             }
 
             .full-height {
-                height: 50vh;
+                height: 100vh;
             }
 
             .flex-center {
@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome User
+                    Новости
                 </div>
 
                 <div class="links">
