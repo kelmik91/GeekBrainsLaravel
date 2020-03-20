@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    private $newsCategory = [
+    public $newsCategory = [
         1 => [
             'title' => 'Политика'
         ] ,

@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('/welcomeUser', 'WelcomeController@index');
 
+Route::match(['get', 'post'], '/feedback', 'FeedbackController@index')
+    ->name('feedback');
+
 /**
  * Вывод новостей
  */
@@ -55,4 +58,3 @@ Route::group([
         ->name('update');
 
 });
-
