@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForeignKeyTable extends Migration
+class CreateForeignKey extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateForeignKeyTable extends Migration
             $table->foreign('author')
                 ->references('id')
                 ->on('users');
-            $table->foreign('category')
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories');
         });

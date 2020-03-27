@@ -2,44 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public $newsCategory = [
-        1 => [
-            'title' => 'Политика'
-        ] ,
-        2 => [
-            'title' => 'Спорт'
-        ] ,
-        3 => [
-            'title' => 'IT'
-        ]
-    ];
-
-    private $news = [
-        1 => [
-            'title' => 'news 1'
-        ] ,
-        2 => [
-            'title' => 'news 2'
-        ]
-    ];
-
 
     public function index()
     {
-        return view('news.index', ['newsCategory' => $this->newsCategory]);
+        $newsCategory = Categories::all();
+        return view('news.index', ['newsCategory' => $newsCategory]);
     }
 
     public function newsCategory($id)
     {
-        return view('news.category', ['id' => $id, 'news' => $this->news]);
+        $category = Categories::find($id);
+        $news = News::query()->where('category_id', $id)->paginate(10);
+        return view('news.category', ['category' => $category, 'news' => $news]);
     }
 
     public function newsCard($category, $id)
     {
-        return view('news.cart', ['id' => $id, 'category' => $category]);
+        $news = News::find($id);
+        $category = Categories::find($category);
+        return view('news.cart', ['category_name' => $category, 'news' => $news]);
     }
 }

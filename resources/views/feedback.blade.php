@@ -24,25 +24,25 @@
         <label>
             E-mail
             <div>
-                <input type="email" name="" id="" name="email">
+                <input type="email" id="" name="email">
             </div>
         </label>
         <label>
             Phone
             <div>
-                <input type="tel" name="" id="" name="phone">
+                <input type="tel" id="" name="phone">
             </div>
         </label>
         <label>
             Theme
             <div>
-                <input type="text" name="" id="" name="theme">
+                <input type="text" id="" name="theme">
             </div>
         </label>
         <label>
             Message
             <div>
-                <textarea name="text" id="" cols="30" rows="10" name="massage"></textarea>
+                <textarea id="" cols="30" rows="10" name="message"></textarea>
             </div>
         </label>
         <input type="submit" value="Send" style="width: 100px">

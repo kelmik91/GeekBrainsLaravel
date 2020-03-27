@@ -1,14 +1,29 @@
 @extends('layout.main')
 
 @section('content')
-    <div>Новости раздела {{$id}}
+    <style>
+        ul {
+            display: flex;
+        }
+        ul > li {
+            margin: 5px;
+            padding: 5px;
+            border: black 1px solid;
+            display: block;
+        }
+    </style>
+
+    <div>Новости раздела {{$category['name']}}
     </div>
-    @foreach ($news as $key => $value)
+    @forelse ($news as $key => $value)
 
         <div>
-            <a href="{{route('newsCard', ['category' => $id, 'id' => $key])}}">
+            <a href="{{route('newsCard', ['category' => $category['id'], 'id' => $value['id']])}}">
                 {{$value['title']}}
             </a>
         </div>
-    @endforeach
+        @empty
+        <div>News empty!</div>
+    @endforelse
+        {{$news->links()}}
 @endsection
