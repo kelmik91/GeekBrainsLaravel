@@ -19,5 +19,6 @@
     <a href="/auth">Авторизация</a>
     <a href="/news">News</a>
     <a href="/feedback">Feedback</a>
+    <a href="/admin/news">Админка</a>
     <hr>
 </nav>

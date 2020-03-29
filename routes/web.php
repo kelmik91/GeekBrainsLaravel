@@ -19,6 +19,8 @@ Route::get('/welcomeUser', 'WelcomeController@index');
 
 Route::match(['get', 'post'], '/feedback', 'FeedbackController@index')
     ->name('feedback');
+Route::match(['get', 'post'], '/feedback/create', 'FeedbackController@create')
+    ->name('feedbackCreate');
 
 Route::get('/user', 'DataBase\UserController@index')
     ->name('user');
@@ -54,10 +56,13 @@ Route::group([
     Route::get('/', "{$controller}@index")
         ->name('index');
 
-    Route::get('/create', 'NewsController@create')
+    Route::match(['get', 'post'],'/create', 'NewsController@create')
         ->name('create');
 
-    Route::get('/update', 'NewsController@update')
+    Route::match(['get', 'post'],'/update', 'NewsController@update')
         ->name('update');
+
+    Route::get('/delete/{id}', 'NewsController@delete')
+        ->name('delete');
 
 });

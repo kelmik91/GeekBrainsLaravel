@@ -15,12 +15,12 @@ class CreateNews extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->nullable(false);
-            $table->string('name', 100);
             $table->string('title', 100);
             $table->text('content');
-            $table->foreignId('image')->nullable(false);
-            $table->foreignId('author');
+            $table->foreignId('category_id')->nullable(false);
+            $table->date('publish_date');
+            $table->date('updated_at');
+            $table->date('created_at');
         });
     }
 
