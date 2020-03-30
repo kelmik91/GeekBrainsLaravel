@@ -18,6 +18,9 @@ class FeedbackController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod('post')) {
+
+            $this->validate($request, Feedback::rules());
+
             /** @var Feedback $feedback */
             $feedback = new Feedback();
             $feedback->fill($request->all());
@@ -25,6 +28,8 @@ class FeedbackController extends Controller
 
             return redirect()->route("feedback");
         }
-        return view('feedbackCreate');
+
+        $model = new Feedback();
+        return view('feedbackCreate', ['model' => $model]);
     }
 }
