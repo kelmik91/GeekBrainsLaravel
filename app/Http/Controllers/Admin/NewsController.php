@@ -18,13 +18,12 @@ class NewsController extends Controller
 
     /**
      * @method GET | POST
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function create(Request $request)
     {
         if ($request->isMethod('post')) {
-
-            $this->validate($request, News::rules());
-
             /** @var News $model */
             $model = new News();
             $model->fill($request->all());
@@ -41,9 +40,6 @@ class NewsController extends Controller
     public function update(Request $request)
     {
         if ($request->isMethod('post')) {
-
-            $this->validate($request, News::rulesUpdate());
-
             /** @var News $model */
             $model = News::find($request->input('id'));
             $model->fill($request->all());

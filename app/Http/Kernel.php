@@ -2,6 +2,11 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ValidateFeedBack;
+use App\Http\Middleware\ValidateNewsCreate;
+use App\Http\Middleware\ValidateNewsUpdate;
+use App\Http\Middleware\ValidateUsersUpdate;
+use App\Http\Middleware\VerifyAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -52,6 +57,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'news.create.validate' => ValidateNewsCreate::class,
+        'news.update.validate' => ValidateNewsUpdate::class,
+        'feedBack.validate' => ValidateFeedBack::class,
+        'users.validate' => ValidateUsersUpdate::class,
+        'admin.verify' => VerifyAdmin::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

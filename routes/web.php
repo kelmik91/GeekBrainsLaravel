@@ -19,8 +19,10 @@ Route::get('/welcomeUser', 'WelcomeController@index');
 
 Route::match(['get', 'post'], '/feedback', 'FeedbackController@index')
     ->name('feedback');
-Route::match(['get', 'post'], '/feedback/create', 'FeedbackController@create')
+Route::get('/feedback/create', 'FeedbackController@create')
     ->name('feedbackCreate');
+Route::post('/feedback/create', 'FeedbackController@create')
+    ->middleware('feedBack.validate');
 
 Route::get('/user', 'DataBase\UserController@index')
     ->name('user');
@@ -50,19 +52,55 @@ Route::get('/auth', 'AuthController@index');
 Route::group([
     'prefix' => 'admin/news',
     'namespace' => 'Admin',
-    'as' => 'admin::news::'
+    'as' => 'admin::news::',
+    'middleware' => ['auth', 'admin.verify']
 ], function(){
-    $controller = 'NewsController';
-    Route::get('/', "{$controller}@index")
+    Route::get('/', "NewsController@index")
         ->name('index');
 
-    Route::match(['get', 'post'],'/create', 'NewsController@create')
+    Route::get('/create', 'NewsController@create')
         ->name('create');
 
-    Route::match(['get', 'post'],'/update', 'NewsController@update')
+    Route::post('/create', 'NewsController@create')
+        ->middleware('news.create.validate')
+        ->name('create');
+
+    Route::get('/update', 'NewsController@update')
+        ->name('update');
+
+    Route::post('/update', 'NewsController@update')
+        ->middleware('news.update.validate')
         ->name('update');
 
     Route::get('/delete/{id}', 'NewsController@delete')
         ->name('delete');
 
 });
+
+/**
+ * Админка пользователей
+ */
+Route::group([
+    'prefix' => 'admin/users',
+    'namespace' => 'Admin',
+    'as' => 'admin::users::',
+    'middleware' => 'admin.verify'
+], function(){
+    Route::get('/', "UsersController@index")
+        ->name('index');
+
+    Route::get('/update', 'UsersController@update')
+        ->name('update');
+
+    Route::post('/update', 'UsersController@update')
+        ->middleware('users.validate')
+        ->name('update');
+
+    Route::get('/delete/{id}', 'UsersController@delete')
+        ->name('delete');
+
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

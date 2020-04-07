@@ -16,7 +16,7 @@
                 @csrf
                 <label for="">Id</label>
                 <div class="form-group">
-                    <input disabled class="form-control" type="text" name="id" value="{{$value['id']}}">
+                    <input class="form-control" type="text" name="id" value="{{$value['id']}}">
                 </div>
                 <label for="">Title</label>
                 <div class="form-group">
