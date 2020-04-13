@@ -6,6 +6,6 @@
         Страница новостей {{$category_name['name']}}
     </p>
     <p>
-        {{$news['content']}}
+        {!!$news['content']!!}
     </p>
 @endsection

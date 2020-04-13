@@ -9,12 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ckeditor/ckeditor": "^4.14",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "illuminate/support": "^7.5",
         "laravel/framework": "^7.0",
+        "laravel/helpers": "^1.2",
         "laravel/tinker": "^2.0",
-        "socialiteproviders/vkontakte": "^4.0"
+        "socialiteproviders/vkontakte": "^4.0",
+        "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

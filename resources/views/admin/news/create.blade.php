@@ -19,8 +19,12 @@
                     <input class="form-control" type="text" name="title" value="{{$model['title'] ?? old('title')}}">
                 </div>
                 <label for="">Description</label>
-                <div class="form-group">
-                    <textarea class="form-control" name="content" id="" cols="30" rows="10">
+                <div class="form-group" style="width: 50%;">
+                    <textarea
+                        class="form-control"
+                        name="content"
+                        id="description"
+                        cols="30" rows="10">
                         {{$model['content'] ?? old('content')}}
                     </textarea>
                 </div>
@@ -41,4 +45,20 @@
             </form>
         </div>
     </div>
+
+
+
+{{--    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>--}}
+    <script src="/vendor/ckeditor/ckeditor/ckeditor.js"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: 'laravel-filemanager?type=Files',
+            filebrowserUploadUrl: 'laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+        };
+    </script>
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 @endsection
