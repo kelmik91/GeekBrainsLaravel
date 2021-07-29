@@ -16,7 +16,8 @@
 <nav>
     <a href="/">Home</a>
     <a href="/welcomeUser">welcome</a>
-    <a href="auth">Авторизация</a>
+    <a href="/auth">Авторизация</a>
     <a href="/news">News</a>
+    <a href="/feedback">Feedback</a>
     <hr>
 </nav>
