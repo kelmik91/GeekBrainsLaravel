@@ -23,7 +23,6 @@ class CreateFeedback extends Migration
             $table->text('message');
             $table->date('updated_at');
             $table->date('created_at');
-
         });
     }
 
