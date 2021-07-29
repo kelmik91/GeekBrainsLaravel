@@ -20,6 +20,9 @@ Route::get('/welcomeUser', 'WelcomeController@index');
 Route::match(['get', 'post'], '/feedback', 'FeedbackController@index')
     ->name('feedback');
 
+Route::get('/user', 'DataBase\UserController@index')
+    ->name('user');
+
 /**
  * Вывод новостей
  */
