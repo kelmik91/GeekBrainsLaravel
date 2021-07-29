@@ -20,6 +20,8 @@
     <a href="/news">News</a>
     <a href="/feedback">Feedback</a>
         @guest
+                <a class="nav-link" href="{{ route('social::loginVk') }}">LoginVK</a>
+                <a class="nav-link" href="{{ route('social::loginFb') }}">LoginFB</a>
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
             @if (Route::has('register'))
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

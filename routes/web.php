@@ -104,3 +104,31 @@ Route::group([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * Авторизация через Vk
+ */
+Route::group([
+    'prefix' => 'social',
+    'as' => 'social::'
+], function () {
+    Route::get('/loginvk', 'SocialController@loginVk')
+        ->name('loginVk');
+
+    Route::get('/responsevk', 'SocialController@responseVk')
+        ->name('responseVk');
+});
+
+/**
+ * Авторизация через Fb
+ */
+Route::group([
+    'prefix' => 'social',
+    'as' => 'social::'
+], function () {
+    Route::get('/loginfb', 'SocialController@loginFb')
+        ->name('loginFb');
+
+    Route::get('/responsefb', 'SocialController@responseFb')
+        ->name('responsefb');
+});
