@@ -14,5 +14,4 @@ class News extends Model
         'category_id',
         'publish_date'
     ];
-
 }
