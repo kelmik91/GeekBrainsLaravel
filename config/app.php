@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
