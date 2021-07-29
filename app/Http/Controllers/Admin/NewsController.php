@@ -22,6 +22,9 @@ class NewsController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod('post')) {
+
+            $this->validate($request, News::rules());
+
             /** @var News $model */
             $model = new News();
             $model->fill($request->all());
@@ -30,13 +33,17 @@ class NewsController extends Controller
             return redirect()->route("admin::news::index");
         }
 
-        return view("admin.news.create", ['categories' => Categories::all()]);
+        $model = new News();
+        return view("admin.news.create", ['categories' => Categories::all(), 'model' => $model]);
 
     }
 
     public function update(Request $request)
     {
         if ($request->isMethod('post')) {
+
+            $this->validate($request, News::rulesUpdate());
+
             /** @var News $model */
             $model = News::find($request->input('id'));
             $model->fill($request->all());

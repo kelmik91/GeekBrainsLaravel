@@ -14,4 +14,15 @@ class Feedback extends Model
         'theme',
         'message'
     ];
+
+    public static function rules()
+    {
+        return [
+            'name' => 'required|min:5|max:100',
+            'email' => 'required|email',
+            'phone' => 'required|integer',
+            'theme' => 'required|alpha_dash|min:5|max:50',
+            'message' => 'required|min:10'
+        ];
+    }
 }
