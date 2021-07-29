@@ -14,9 +14,6 @@ class CreateForeignKey extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->foreign('author')
-                ->references('id')
-                ->on('users');
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories');
@@ -31,8 +28,7 @@ class CreateForeignKey extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->dropForeign('news_user_id_foreign');
-            $table->dropForeign('news_user_id_foreign');
+            $table->dropForeign('news_category_id_foreign');
         });
     }
 }

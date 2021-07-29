@@ -7,19 +7,24 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    public function index(Request $request)
+    /** @method GET | POST */
+
+    public function index()
+    {
+        $feed = Feedback::all();
+        return view('feedback', ['feedback' => $feed]);
+    }
+
+    public function create(Request $request)
     {
         if ($request->isMethod('post')) {
+            /** @var Feedback $feedback */
             $feedback = new Feedback();
-
             $feedback->fill($request->all());
             $feedback->save();
 
-
-            return redirect()->route("feedback::index");
+            return redirect()->route("feedback");
         }
-
-        $feed = Feedback::all();
-        return view('feedback', ['feedback' => $feed]);
+        return view('feedbackCreate');
     }
 }
