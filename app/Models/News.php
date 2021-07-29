@@ -28,6 +28,7 @@ class News extends Model
     public static function rulesUpdate()
     {
         return [
+            'id' => 'exists:news,id',
             'title' => 'required|min:5|max:50',
             'content' => 'required|min:10',
             'category_id' => 'required|exists:categories,id',
